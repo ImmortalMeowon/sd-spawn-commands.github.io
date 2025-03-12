@@ -80,3 +80,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+/* Добавьте это в ваш styles.css файл */
+
+.skin-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.skin-btn {
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.skin-btn:hover {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.skin-btn.active {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.variant-content {
+    display: none;
+}
+
+.variant-content.active {
+    display: block;
+}
