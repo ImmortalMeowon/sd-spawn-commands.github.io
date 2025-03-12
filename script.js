@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Theme toggle functionality
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
     const themeIcon = themeToggleBtn.querySelector('i');
     const themeText = themeToggleBtn.querySelector('span');
@@ -23,40 +22,30 @@ document.addEventListener('DOMContentLoaded', function() {
     
     tabButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remove active class from all buttons
             tabButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
             this.classList.add('active');
             
-            // Hide all content sections
             contentSections.forEach(section => section.classList.remove('active'));
-            // Show the corresponding content section
             const tabId = this.getAttribute('data-tab');
             document.getElementById(tabId).classList.add('active');
         });
     });
     
-    // Faction tab functionality
     const factionButtons = document.querySelectorAll('.faction-btn');
     
     factionButtons.forEach(button => {
         button.addEventListener('click', function() {
             const parentSection = this.closest('.content-section');
             
-            // Remove active class from all faction buttons in this section
             parentSection.querySelectorAll('.faction-btn').forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
             this.classList.add('active');
             
-            // Hide all faction content in this section
             parentSection.querySelectorAll('.faction-content').forEach(content => content.classList.remove('active'));
-            // Show the corresponding faction content
             const factionId = this.getAttribute('data-faction');
             parentSection.querySelector(`#${factionId}`).classList.add('active');
         });
     });
     
-    // Copy functionality for spawn commands
     const copyButtons = document.querySelectorAll('.copy-btn');
     
     copyButtons.forEach(button => {
@@ -79,41 +68,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         });
     });
+    
+    const skinButtons = document.querySelectorAll('.skin-btn');
+
+    skinButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const equipmentCard = this.closest('.equipment-card');
+            
+            equipmentCard.querySelectorAll('.skin-btn').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            equipmentCard.querySelectorAll('.variant-content').forEach(content => content.classList.remove('active'));
+            const variantType = this.getAttribute('data-variant');
+            equipmentCard.querySelector(`.variant-content.${variantType}`).classList.add('active');
+        });
+    });
+    // КОНЕЦ НОВОГО КОДА
 });
-
-/* Добавьте это в ваш styles.css файл */
-
-.skin-selector {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 15px;
-}
-
-.skin-btn {
-    background-color: var(--background);
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.skin-btn:hover {
-    background-color: var(--secondary);
-    color: white;
-}
-
-.skin-btn.active {
-    background-color: var(--secondary);
-    color: white;
-}
-
-.variant-content {
-    display: none;
-}
-
-.variant-content.active {
-    display: block;
-}
