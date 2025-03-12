@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Military Equipment Database</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="light-mode">
@@ -57,11 +58,16 @@
                                 <i class="fas fa-copy"></i>
                             </button>
                         </div>
-                        <div class="image-placeholder">
-                            <!-- Заменить на реальное изображение -->
-                            <img src="/api/placeholder/400/300" alt="M1A2 Abrams Desert">
-                        </div>
+                    <div class="image-placeholder">
+                        <model-viewer src="M1A2_Turrerout.gltf" 
+                                      alt="M1A2 Abrams"
+                                      auto-rotate 
+                                      camera-controls 
+                                      ar
+                                      style="width: 100%; height: 300px;">
+                        </model-viewer>
                     </div>
+
                     
                     <div class="variant-content woodland">
                         <div class="spawn-command">
