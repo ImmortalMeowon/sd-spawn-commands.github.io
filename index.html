@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Military Equipment Database</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <header>
+            <h1>Military Equipment Database</h1>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <ul>
+                <li><button class="tab-btn active" data-tab="earth">Earth</button></li>
+                <li><button class="tab-btn" data-tab="air">Air</button></li>
+                <li><button class="tab-btn" data-tab="water">Water</button></li>
+                <li><button class="tab-btn" data-tab="armor">Armor Thickness</button></li>
+            </ul>
+        </nav>
+
+        <div id="earth" class="content-section active">
+            <div class="faction-tabs">
+                <ul>
+                    <li><button class="faction-btn active" data-faction="earth-ussf">USSF</button></li>
+                    <li><button class="faction-btn" data-faction="earth-sspr">SSPR</button></li>
+                    <li><button class="faction-btn" data-faction="earth-tsf">TSF</button></li>
+                    <li><button class="faction-btn" data-faction="earth-red">RED</button></li>
+                    <li><button class="faction-btn" data-faction="earth-pmc">PMC</button></li>
+                    <li><button class="faction-btn" data-faction="earth-sof">SOF</button></li>
+                </ul>
+            </div>
+            
+            <div class="equipment-container">
+                <!-- USSF Earth Equipment -->
+                <div id="earth-ussf" class="faction-content active">
+                    <div class="equipment-card">
+                        <h3>M1A2 Abrams</h3>
+                        <div class="spawn-command">
+                            <code id="spawn-abrams">SpawnVehicle Abrams_USSF</code>
+                            <button class="copy-btn" data-spawn="spawn-abrams">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="image-placeholder">
+                            <!-- Replace with actual image -->
+                            <img src="/api/placeholder/400/300" alt="M1A2 Abrams">
+                        </div>
+                    </div>
+                    
+                    <!-- Add more USSF earth vehicles here -->
+                </div>
+                
+                <!-- SSPR Earth Equipment -->
+                <div id="earth-sspr" class="faction-content">
+                    <div class="equipment-card">
+                        <h3>T-90M</h3>
+                        <div class="spawn-command">
+                            <code id="spawn-t90m">SpawnVehicle T90M_SSPR</code>
+                            <button class="copy-btn" data-spawn="spawn-t90m">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="image-placeholder">
+                            <!-- Replace with actual image -->
+                            <img src="/api/placeholder/400/300" alt="T-90M">
+                        </div>
+                    </div>
+                    
+                    <!-- Add more SSPR earth vehicles here -->
+                </div>
+                
+                <!-- TSF Earth Equipment -->
+                <div id="earth-tsf" class="faction-content">
+                    <!-- TSF vehicles here -->
+                    <p>TSF ground vehicles will be added here.</p>
+                </div>
+                
+                <!-- RED Earth Equipment -->
+                <div id="earth-red" class="faction-content">
+                    <!-- RED vehicles here -->
+                    <p>RED ground vehicles will be added here.</p>
+                </div>
+                
+                <!-- PMC Earth Equipment -->
+                <div id="earth-pmc" class="faction-content">
+                    <!-- PMC vehicles here -->
+                    <p>PMC ground vehicles will be added here.</p>
+                </div>
+                
+                <!-- SOF Earth Equipment -->
+                <div id="earth-sof" class="faction-content">
+                    <!-- SOF vehicles here -->
+                    <p>SOF ground vehicles will be added here.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="air" class="content-section">
+            <div class="faction-tabs">
+                <ul>
+                    <li><button class="faction-btn active" data-faction="air-ussf">USSF</button></li>
+                    <li><button class="faction-btn" data-faction="air-sspr">SSPR</button></li>
+                    <li><button class="faction-btn" data-faction="air-tsf">TSF</button></li>
+                    <li><button class="faction-btn" data-faction="air-red">RED</button></li>
+                    <li><button class="faction-btn" data-faction="air-pmc">PMC</button></li>
+                    <li><button class="faction-btn" data-faction="air-sof">SOF</button></li>
+                </ul>
+            </div>
+            
+            <div class="equipment-container">
+                <!-- USSF Air Equipment -->
+                <div id="air-ussf" class="faction-content active">
+                    <div class="equipment-card">
+                        <h3>F-35 Lightning II</h3>
+                        <div class="spawn-command">
+                            <code id="spawn-f35">SpawnVehicle F35_USSF</code>
+                            <button class="copy-btn" data-spawn="spawn-f35">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="image-placeholder">
+                            <!-- Replace with actual image -->
+                            <img src="/api/placeholder/400/300" alt="F-35 Lightning II">
+                        </div>
+                    </div>
+                    
+                    <!-- Add more USSF air vehicles here -->
+                </div>
+                
+                <!-- SSPR Air Equipment -->
+                <div id="air-sspr" class="faction-content">
+                    <!-- SSPR air vehicles here -->
+                    <p>SSPR air vehicles will be added here.</p>
+                </div>
+                
+                <!-- Other factions air vehicles -->
+                <div id="air-tsf" class="faction-content">
+                    <p>TSF air vehicles will be added here.</p>
+                </div>
+                
+                <div id="air-red" class="faction-content">
+                    <p>RED air vehicles will be added here.</p>
+                </div>
+                
+                <div id="air-pmc" class="faction-content">
+                    <p>PMC air vehicles will be added here.</p>
+                </div>
+                
+                <div id="air-sof" class="faction-content">
+                    <p>SOF air vehicles will be added here.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="water" class="content-section">
+            <div class="faction-tabs">
+                <ul>
+                    <li><button class="faction-btn active" data-faction="water-ussf">USSF</button></li>
+                    <li><button class="faction-btn" data-faction="water-sspr">SSPR</button></li>
+                    <li><button class="faction-btn" data-faction="water-tsf">TSF</button></li>
+                    <li><button class="faction-btn" data-faction="water-red">RED</button></li>
+                    <li><button class="faction-btn" data-faction="water-pmc">PMC</button></li>
+                    <li><button class="faction-btn" data-faction="water-sof">SOF</button></li>
+                </ul>
+            </div>
+            
+            <div class="equipment-container">
+                <!-- USSF Water Equipment -->
+                <div id="water-ussf" class="faction-content active">
+                    <div class="equipment-card">
+                        <h3>Aircraft Carrier</h3>
+                        <div class="spawn-command">
+                            <code id="spawn-carrier">SpawnVehicle Carrier_USSF</code>
+                            <button class="copy-btn" data-spawn="spawn-carrier">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="image-placeholder">
+                            <!-- Replace with actual image -->
+                            <img src="/api/placeholder/400/300" alt="Aircraft Carrier">
+                        </div>
+                    </div>
+                    
+                    <!-- Add more USSF water vehicles here -->
+                </div>
+                
+                <!-- SSPR Water Equipment -->
+                <div id="water-sspr" class="faction-content">
+                    <!-- SSPR water vehicles here -->
+                    <p>SSPR naval vessels will be added here.</p>
+                </div>
+                
+                <!-- Other factions water vehicles -->
+                <div id="water-tsf" class="faction-content">
+                    <p>TSF naval vessels will be added here.</p>
+                </div>
+                
+                <div id="water-red" class="faction-content">
+                    <p>RED naval vessels will be added here.</p>
+                </div>
+                
+                <div id="water-pmc" class="faction-content">
+                    <p>PMC naval vessels will be added here.</p>
+                </div>
+                
+                <div id="water-sof" class="faction-content">
+                    <p>SOF naval vessels will be added here.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="armor" class="content-section">
+            <h2>Armor Thickness</h2>
+            <div class="armor-gallery">
+                <div class="armor-card">
+                    <h3>M1A2 Abrams Armor Profile</h3>
+                    <div class="armor-images">
+                        <div class="vehicle-image">
+                            <!-- Replace with actual image -->
+                            <img src="/api/placeholder/400/300" alt="M1A2 Abrams">
+                            <p>Vehicle View</p>
+                        </div>
+                        <div class="armor-diagram">
+                            <!-- Replace with actual armor diagram -->
+                            <img src="/api/placeholder/400/300" alt="M1A2 Abrams Armor Diagram">
+                            <p>Armor Thickness Diagram</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="armor-card">
+                    <h3>T-90M Armor Profile</h3>
+                    <div class="armor-images">
+                        <div class="vehicle-image">
+                            <!-- Replace with actual image -->
+                            <img src="/api/placeholder/400/300" alt="T-90M">
+                            <p>Vehicle View</p>
+                        </div>
+                        <div class="armor-diagram">
+                            <!-- Replace with actual armor diagram -->
+                            <img src="/api/placeholder/400/300" alt="T-90M Armor Diagram">
+                            <p>Armor Thickness Diagram</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add more armor profiles here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Military Equipment Database</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
