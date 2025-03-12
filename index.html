@@ -40,22 +40,56 @@
                 </ul>
             </div>
             
-            <div class="equipment-container">
-                <!-- USSF Earth Equipment -->
-                <div id="earth-ussf" class="faction-content active">
-                    <div class="equipment-card">
-                        <h3>M1A2 Abrams</h3>
-                        <div class="spawn-command">
-                            <code id="spawn-abrams">SpawnVehicle Abrams_USSF</code>
-                            <button class="copy-btn" data-spawn="spawn-abrams">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        </div>
-                        <div class="image-placeholder">
-                            <!-- Replace with actual image -->
-                            <img src="/api/placeholder/400/300" alt="M1A2 Abrams">
-                        </div>
-                    </div>
+<div class="equipment-card">
+    <h3>M1A2 Abrams</h3>
+    
+    <!-- Переключатель вариантов раскраски -->
+    <div class="skin-selector">
+        <button class="skin-btn active" data-variant="default">Default</button>
+        <button class="skin-btn" data-variant="desert">Desert</button>
+        <button class="skin-btn" data-variant="woodland">Woodland</button>
+    </div>
+    
+    <!-- Команды спавна для разных вариантов -->
+    <div class="variant-content default active">
+        <div class="spawn-command">
+            <code id="spawn-abrams-default">SpawnVehicle Abrams_USSF</code>
+            <button class="copy-btn" data-spawn="spawn-abrams-default">
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+        <div class="image-placeholder">
+            <!-- Заменить на реальное изображение -->
+            <img src="/api/placeholder/400/300" alt="M1A2 Abrams Default">
+        </div>
+    </div>
+    
+    <div class="variant-content desert">
+        <div class="spawn-command">
+            <code id="spawn-abrams-desert">SpawnVehicle Abrams_USSF_Desert</code>
+            <button class="copy-btn" data-spawn="spawn-abrams-desert">
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+        <div class="image-placeholder">
+            <!-- Заменить на реальное изображение -->
+            <img src="/api/placeholder/400/300" alt="M1A2 Abrams Desert">
+        </div>
+    </div>
+    
+    <div class="variant-content woodland">
+        <div class="spawn-command">
+            <code id="spawn-abrams-woodland">SpawnVehicle Abrams_USSF_Woodland</code>
+            <button class="copy-btn" data-spawn="spawn-abrams-woodland">
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+        <div class="image-placeholder">
+            <!-- Заменить на реальное изображение -->
+            <img src="/api/placeholder/400/300" alt="M1A2 Abrams Woodland">
+        </div>
+    </div>
+</div>
                     
                     <!-- Add more USSF earth vehicles here -->
                 </div>
