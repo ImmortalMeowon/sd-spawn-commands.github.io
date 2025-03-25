@@ -14,7 +14,7 @@ let tankModel;
 let normalMaterials = [];
 let armorMaterials = [];
 
-loader.load('tank.glb', (gltf) => {
+loader.load('a.glb', (gltf) => {
     tankModel = gltf.scene;
     scene.add(tankModel);
     
