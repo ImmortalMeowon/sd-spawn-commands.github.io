@@ -1,57 +1,121 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-// Создаем сцену, камеру и рендерер
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+class TankViewer {
+    constructor() {
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        
+        this.setupRenderer();
+        this.setupLights();
+        this.setupCamera();
+        this.setupControls();
+        this.loadTankModel();
+        this.setupEventListeners();
+    }
 
-// Загрузка модели
-const loader = new GLTFLoader();
-let tankModel;
-let normalMaterials = [];
-let armorMaterials = [];
+    setupRenderer() {
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.shadowMap.enabled = true;
+        document.body.appendChild(this.renderer.domElement);
+    }
 
-loader.load('a.glb', (gltf) => {
-    tankModel = gltf.scene;
-    scene.add(tankModel);
-    
-    // Создаем два варианта материалов
-    tankModel.traverse((child) => {
-        if (child.isMesh) {
-            normalMaterials.push(child.material);
-            armorMaterials.push(new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true })); // Красный каркас
-        }
-    });
-});
+    setupLights() {
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(5, 10, 7);
+        directionalLight.castShadow = true;
+        
+        this.scene.add(ambientLight);
+        this.scene.add(directionalLight);
+    }
 
-camera.position.set(0, 2, 5);
+    setupCamera() {
+        this.camera.position.set(0, 3, 5);
+        this.camera.lookAt(0, 0, 0);
+    }
 
-// Переключение режима
-let isArmorMode = false;
-document.getElementById('toggleMode').addEventListener('click', () => {
-    if (tankModel) {
-        tankModel.traverse((child, index) => {
+    setupControls() {
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+        this.controls.enableDamping = true;
+        this.controls.dampingFactor = 0.05;
+    }
+
+    loadTankModel() {
+        const loader = new GLTFLoader();
+        loader.load('a.glb', (gltf) => {
+            this.tankModel = gltf.scene;
+            
+            this.normalMaterials = [];
+            this.armorMaterials = [];
+
+            this.tankModel.traverse((child) => {
+                if (child.isMesh) {
+                    // Сохраняем оригинальные материалы
+                    this.normalMaterials.push(child.material.clone());
+                    
+                    // Создаем материал для режима брони
+                    const armorMaterial = new THREE.MeshStandardMaterial({
+                        color: 0xff0000,
+                        wireframe: true,
+                        opacity: 0.5,
+                        transparent: true
+                    });
+                    this.armorMaterials.push(armorMaterial);
+
+                    // Включаем тени
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                }
+            });
+
+            this.scene.add(this.tankModel);
+            this.animate();
+        }, undefined, (error) => {
+            console.error('Ошибка загрузки модели:', error);
+        });
+    }
+
+    toggleArmorMode() {
+        if (!this.tankModel) return;
+
+        this.isArmorMode = !this.isArmorMode;
+        
+        this.tankModel.traverse((child, index) => {
             if (child.isMesh) {
-                child.material = isArmorMode ? normalMaterials[index] : armorMaterials[index];
+                child.material = this.isArmorMode 
+                    ? this.armorMaterials[index] 
+                    : this.normalMaterials[index];
             }
         });
-        isArmorMode = !isArmorMode;
     }
-});
 
-// Анимация
-function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
+    setupEventListeners() {
+        document.getElementById('toggleMode').addEventListener('click', () => this.toggleArmorMode());
+
+        window.addEventListener('resize', () => {
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    }
+
+    animate() {
+        requestAnimationFrame(() => this.animate());
+        
+        // Вращение танка
+        if (this.tankModel) {
+            this.tankModel.rotation.y += 0.005;
+        }
+
+        this.controls.update();
+        this.renderer.render(this.scene, this.camera);
+    }
 }
-animate();
 
-// Адаптация под окно браузера
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+// Инициализация при загрузке страницы
+window.addEventListener('load', () => {
+    new TankViewer();
 });
