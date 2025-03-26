@@ -1,0 +1,8 @@
+{
+  "name": "3d-tank-viewer",
+  "version": "1.0.0",
+  "dependencies": {
+    "three": "^0.163.0"
+  },
+  "type": "module"
+}
